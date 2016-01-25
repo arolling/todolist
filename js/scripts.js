@@ -16,7 +16,7 @@ $(document).ready(function() {
     var newToDo = new ToDoItem(newTask);
     console.log(newToDo);
 
-    $("#toDoItems").append("<li>"+newToDo.task+"</li>");
+    $("#toDoItems").append('<div class="checkbox"><label><input type="checkbox">'+newToDo.task+'</label></div>');
     $("input#new-todo").val("");
   });
 });
