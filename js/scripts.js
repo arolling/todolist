@@ -4,7 +4,15 @@ function ToDoItem(task){
 }
 
 ToDoItem.prototype.completeTask =function() {
-  return this.completed = true;
+  if (this.completed === false) {
+    this.completed = true;
+    console.log("finished");
+  } else {
+    this.completed = false;
+    console.log("unfinished");
+  }
+
+  return this.completed;
 }
 // End business logic
 
@@ -16,7 +24,25 @@ $(document).ready(function() {
     var newToDo = new ToDoItem(newTask);
     console.log(newToDo);
 
-    $("#toDoItems").append('<div class="checkbox"><label><input type="checkbox">'+newToDo.task+'</label></div>');
+    $("#toDoItems").append('<div class="checkbox"><label><input class="listItem" type="checkbox">'+newToDo.task+'</label></div>');
     $("input#new-todo").val("");
+
+    $(".listItem").last().click(function() {
+      //alert("You clicked on " + newToDo.task);
+      newToDo.completeTask();
+      if(newToDo.completed === true) {
+        $("#completedItems").append('<li>' + newToDo.task + '</li>');
+      }
+      if(newToDo.completed === false) {
+        alert("You lied!");
+      }
+
+    });
+
+    // $("button#complete").submit(function(event) {
+    //   event.preventDefault();
+    //   var finishedTask = $("input:checked").val();
+    //   console.log(finishedTask);
+    // });
   });
 });
