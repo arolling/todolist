@@ -11,7 +11,6 @@ ToDoItem.prototype.completeTask =function() {
     this.completed = false;
     console.log("unfinished");
   }
-
   return this.completed;
 }
 // End business logic
@@ -31,10 +30,10 @@ $(document).ready(function() {
       //alert("You clicked on " + newToDo.task);
       newToDo.completeTask();
       if(newToDo.completed === true) {
-        $("#completedItems").append('<li>' + newToDo.task + '</li>');
+        $("#completedItems").append('<span id='+ newToDo.task + '><li>'  + newToDo.task + '</li></span>');
       }
       if(newToDo.completed === false) {
-        alert("You lied!");
+        $("span#" + newToDo.task).empty();
       }
 
     });
