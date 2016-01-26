@@ -31,6 +31,7 @@ $(document).ready(function() {
       newToDo.completeTask();
       if(newToDo.completed === true) {
         $("#completedItems").append('<span id='+ newToDo.task + '><li>'  + newToDo.task + '</li></span>');
+        
       }
       if(newToDo.completed === false) {
         $("span#" + newToDo.task).empty();
